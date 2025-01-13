@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Predicción del Titanic</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    
+<body>
+    <h1>Predicción de Supervivencia - Titanic</h1>
+
+    <form action="/predict_form" method="POST">
+        <label for="Pclass">Clase del pasajero (1, 2, 3):</label>
+        <input type="number" id="Pclass" name="Pclass" min="1" max="3" required><br><br>
+
+        <label for="Sex">Género:</label>
+        <select id="Sex" name="Sex" required>
+            <option value="male">Masculino</option>
+            <option value="female">Femenino</option>
+        </select><br><br>
+
+        <label for="Age">Edad:</label>
+        <input type="number" id="Age" name="Age" min="0" step="0.1" required><br><br>
+
+        <button type="submit">Predecir</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Resultado de la Predicción:</h2>
+        <p>{{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
